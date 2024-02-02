@@ -1,6 +1,7 @@
 const estudiantes = [
     {
         name:"Jairo", 
+        surname: "Romero Garzon",
         age: 26, 
         city: "Granada", 
         hobby:"games", 
@@ -23,3 +24,26 @@ const estudiantes = [
         petName: "Spay"
     }
 ]
+
+// Takes firts the surname and then the name to make the sort 
+function orderBySurnameAndName(array) {
+    const sortedArray = array.toSorted((a, b) => {
+        // 1 for greater, -1 for lower, 0 to equal
+        const surnameOrder = a.surname.localeCompare(b.surname)
+        if (surnameOrder !== 0)
+            return surnameOrder
+        // 1 for greater, -1 for lower, 0 to equal
+        const nameOrder = a.name.localeCompare(b.name)
+        return nameOrder
+    })
+    return sortedArray
+}
+
+// Prints the name and surname of each person in an array
+function printNameAndSurnameFromObjectArray(array) {
+    for(const {name, surname} of array) {
+        console.log(name, surname)
+    }
+}
+
+printNameAndSurnameFromObjectArray(orderBySurnameAndName(estudiantes))
