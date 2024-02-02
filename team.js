@@ -41,8 +41,8 @@ function orderBySurnameAndName(array) {
 
 // Prints the name and surname of each person in an array
 function printNameAndSurnameFromObjectArray(array) {
-    for(const {name, surname} of array) {
-        console.log(name, surname)
+    for(const [index, {name, surname}] of array.entries()) {
+        console.log(`\t${index+1}) ${surname} ${name}`)
     }
 }
 
@@ -50,7 +50,7 @@ function printNameAndSurnameFromObjectArray(array) {
 function middleAge(array) {
     let peopleWithAge = 0
     const sumOfAges = array.reduce((acc, { age }) => {
-        // Checks if there is an age
+        // Checks if there is an age and doesnt count people that doesnt have an age
         if(age) {
             peopleWithAge++
             return acc + age
@@ -60,5 +60,6 @@ function middleAge(array) {
     return sumOfAges / peopleWithAge
 }
 
+console.log("Team alphabetically ordered: ")
 printNameAndSurnameFromObjectArray(orderBySurnameAndName(estudiantes))
-console.log(middleAge(estudiantes))
+console.log("\nMiddle age of the group: " + middleAge(estudiantes))
