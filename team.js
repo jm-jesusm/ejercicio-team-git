@@ -46,4 +46,19 @@ function printNameAndSurnameFromObjectArray(array) {
     }
 }
 
+// Obtain the middle age of the people in an array
+function middleAge(array) {
+    let peopleWithAge = 0
+    const sumOfAges = array.reduce((acc, { age }) => {
+        // Checks if there is an age
+        if(age) {
+            peopleWithAge++
+            return acc + age
+        }
+        return 0
+    }, 0)
+    return sumOfAges / peopleWithAge
+}
+
 printNameAndSurnameFromObjectArray(orderBySurnameAndName(estudiantes))
+console.log(middleAge(estudiantes))
