@@ -60,6 +60,25 @@ function middleAge(array) {
     return sumOfAges / peopleWithAge
 }
 
+// Returns the array of people who gavourite game is lol
+function peopleWhosFavoriteGameIsLol(array) {
+    return array.filter(({favoriteVideoGame}) => 
+        favoriteVideoGame.toUpperCase() === "LOL" || 
+        favoriteVideoGame.toUpperCase() === "LEAGUE OF LEGENDS"
+    )
+}
+
+// Prints in a pretty way the people who plays league
+function printLeaguePlayers(array) {
+    if(array.length === 0)
+        return console.log("There is no league players in this group")
+    console.log("League players of this group: ")
+    for(const {name} of array) {
+        console.log(`\t${name}`)
+    }
+}
+
 console.log("Team alphabetically ordered: ")
 printNameAndSurnameFromObjectArray(orderBySurnameAndName(estudiantes))
 console.log("\nMiddle age of the group: " + middleAge(estudiantes))
+printLeaguePlayers(peopleWhosFavoriteGameIsLol(estudiantes))
